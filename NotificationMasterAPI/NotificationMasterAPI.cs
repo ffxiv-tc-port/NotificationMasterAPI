@@ -73,7 +73,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallDisplayToastNotification.HasFunction) return false;
             return CallDisplayToastNotification.InvokeFunc(PluginInterface.InternalName, title ?? PluginInterface.Manifest.Name, text);
         }
         catch(IpcNotReadyError)
@@ -91,7 +90,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallFlashTaskbarIcon.HasFunction) return false;
             return CallFlashTaskbarIcon.InvokeFunc(PluginInterface.InternalName);
         }
         catch(IpcNotReadyError)
@@ -109,7 +107,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallBringGameForeground.HasFunction) return false;
             return CallBringGameForeground.InvokeFunc(PluginInterface.InternalName);
         }
         catch(IpcNotReadyError)
@@ -131,7 +128,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallPlaySound.HasFunction) return false;
             return CallPlaySound.InvokeFunc(PluginInterface.InternalName, pathOnDisk, volume, repeat, stopOnGameFocus);
         }
         catch(IpcNotReadyError)
@@ -149,7 +145,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallStopSound.HasFunction) return false;
             return CallStopSound.InvokeFunc(PluginInterface.InternalName);
         }
         catch(IpcNotReadyError)
@@ -160,10 +155,6 @@ public class NotificationMasterApi
 
     private bool IsGameWindowActivated()
     {
-        if(!CallIsGameWindowActivated.HasFunction)
-        {
-            return false;
-        }
         return CallIsGameWindowActivated.InvokeFunc();
     }
 
@@ -172,7 +163,6 @@ public class NotificationMasterApi
         Validate();
         try
         {
-            if(!CallSendHttpRequest.HasFunction) return false;
             return CallSendHttpRequest.InvokeFunc(PluginInterface.InternalName, elements, replacements ?? []);
         }
         catch(IpcNotReadyError)
